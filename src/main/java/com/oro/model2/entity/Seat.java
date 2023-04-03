@@ -22,10 +22,10 @@ public class Seat {
 
     private int number;
 
+    @ManyToOne
+    private Auditorium auditorium;
+
     @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "seat", cascade = CascadeType.ALL)
     private List<Ticket> ticketList;
-
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "seat", cascade = CascadeType.ALL)
-    private List<Auditorium> auditoriumList;
 }

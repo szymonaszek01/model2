@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @NoArgsConstructor
@@ -21,9 +21,9 @@ public class Screening {
 
     private String film;
 
-    private LocalDate start;
+    private LocalDateTime reservationStart;
 
-    private LocalDate end;
+    private LocalDateTime reservationEnd;
 
     @ManyToOne
     private Auditorium auditorium;

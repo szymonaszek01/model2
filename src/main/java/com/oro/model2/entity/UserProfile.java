@@ -33,5 +33,5 @@ public class UserProfile {
 
     @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "userProfile", cascade = CascadeType.ALL)
-    private List<Reservation> reservationsList;
+    private List<Reservation> reservationList;
 }

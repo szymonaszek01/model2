@@ -23,6 +23,10 @@ public class Auditorium {
     private int capacity;
 
     @JsonIgnore
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "auditorium", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "auditorium", cascade = CascadeType.ALL)
     private List<Seat> seatList;
+
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "auditorium", cascade = CascadeType.ALL)
+    private List<Screening> screeningList;
 }
