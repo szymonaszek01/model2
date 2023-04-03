@@ -19,8 +19,6 @@ public class Reservation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private BigDecimal cost;
-
     private String status;
 
     @ManyToOne

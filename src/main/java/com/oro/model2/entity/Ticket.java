@@ -17,8 +17,6 @@ public class Ticket {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private BigDecimal cost;
-
     @ManyToOne
     private Discount discount;
 
