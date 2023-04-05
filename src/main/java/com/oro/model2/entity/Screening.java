@@ -20,16 +20,17 @@ public class Screening {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private String film;
-
     private BigDecimal cost;
 
-    private LocalDateTime reservationStart;
+    private LocalDateTime screeningStart;
 
-    private LocalDateTime reservationEnd;
+    private LocalDateTime screeningEnd;
 
     @ManyToOne
     private Auditorium auditorium;
+
+    @ManyToOne
+    private Film film;
 
     @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "screening", cascade = CascadeType.ALL)

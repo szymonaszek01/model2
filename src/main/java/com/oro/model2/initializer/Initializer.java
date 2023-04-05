@@ -21,6 +21,8 @@ public class Initializer implements CommandLineRunner {
 
     private final DiscountRepository discountRepository;
 
+    private final FilmRepository filmRepository;
+
     private final ReservationRepository reservationRepository;
 
     private final ScreeningRepository screeningRepository;
@@ -34,6 +36,8 @@ public class Initializer implements CommandLineRunner {
     private final List<Auditorium> auditoriumList = new ArrayList<>();
 
     private final List<Discount> discountList = new ArrayList<>();
+
+    private final List<Film> filmList = new ArrayList<>();
 
     private final List<Reservation> reservationList = new ArrayList<>();
 
@@ -49,6 +53,7 @@ public class Initializer implements CommandLineRunner {
     public void run(String... args) throws Exception {
         initializeAuditoriums();
         initializeDiscounts();
+        initializeFilms();
         initializeUserProfiles();
         initializeReservations();
         initializeScreenings();
@@ -57,6 +62,7 @@ public class Initializer implements CommandLineRunner {
 
         auditoriumRepository.saveAll(auditoriumList);
         discountRepository.saveAll(discountList);
+        filmRepository.saveAll(filmList);
         userProfileRepository.saveAll(userProfileList);
         reservationRepository.saveAll(reservationList);
         screeningRepository.saveAll(screeningList);
@@ -84,6 +90,17 @@ public class Initializer implements CommandLineRunner {
         );
     }
 
+    private void initializeFilms() {
+        filmList.addAll(
+            Arrays.asList(
+                Film.builder().id(1L).name("Fast and furious 10").build(),
+                Film.builder().id(2L).name("Iron man 3").build(),
+                Film.builder().id(3L).name("Toy story 3").build(),
+                Film.builder().id(4L).name("Top gun Maverick").build()
+            )
+        );
+    }
+
     private void initializeUserProfiles() {
         userProfileList.addAll(
             Arrays.asList(
@@ -97,9 +114,10 @@ public class Initializer implements CommandLineRunner {
     private void initializeScreenings() {
         screeningList.addAll(
             Arrays.asList(
-                Screening.builder().id(1L).film("Fast and furious 10").cost(BigDecimal.valueOf(60)).reservationStart(LocalDateTime.now()).reservationEnd(LocalDateTime.now().plusHours(2)).auditorium(auditoriumList.get(0)).build(),
-                Screening.builder().id(2L).film("Iron man 3").cost(BigDecimal.valueOf(70)).reservationStart(LocalDateTime.now()).reservationEnd(LocalDateTime.now().plusHours(2)).auditorium(auditoriumList.get(1)).build(),
-                Screening.builder().id(3L).film("Top gun Maverick").cost(BigDecimal.valueOf(80)).reservationStart(LocalDateTime.now()).reservationEnd(LocalDateTime.now().plusHours(2)).auditorium(auditoriumList.get(2)).build()
+                Screening.builder().id(1L).film(filmList.get(0)).cost(BigDecimal.valueOf(60)).screeningStart(LocalDateTime.now()).screeningEnd(LocalDateTime.now().plusHours(2)).auditorium(auditoriumList.get(0)).build(),
+                Screening.builder().id(2L).film(filmList.get(1)).cost(BigDecimal.valueOf(70)).screeningStart(LocalDateTime.now()).screeningEnd(LocalDateTime.now().plusHours(2)).auditorium(auditoriumList.get(1)).build(),
+                Screening.builder().id(3L).film(filmList.get(2)).cost(BigDecimal.valueOf(80)).screeningStart(LocalDateTime.now()).screeningEnd(LocalDateTime.now().plusHours(2)).auditorium(auditoriumList.get(1)).build(),
+                Screening.builder().id(4L).film(filmList.get(3)).cost(BigDecimal.valueOf(80)).screeningStart(LocalDateTime.now()).screeningEnd(LocalDateTime.now().plusHours(2)).auditorium(auditoriumList.get(2)).build()
             )
         );
     }
